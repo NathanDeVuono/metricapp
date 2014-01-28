@@ -1,0 +1,142 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: "Open Sans", verdana, arial, helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 22px; }
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 22px; }
+
+p {
+  text-indent: 16px; }
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+a {
+  color: #000; }
+  a:visited {
+    color: #666; }
+  a:hover {
+    color: #fff;
+    background-color: #000; }
+
+div.field, div.actions {
+  margin-bottom: 10px; }
+
+#notice {
+  color: green; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+  #error_explanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff; }
+  #error_explanation ul li {
+    font-size: 12px;
+    list-style: square; }
+
+.navigation {
+  float: left; }
+
+.clear {
+  clear: both; }
+
+.overview {
+  padding: 15px;
+  float: left;
+  width: -webkit-calc(100% - 200px);
+  width: -moz-calc(100% - 200px);
+  width: calc(100% - 200px); }
+
+.chart {
+  height: 500px;
+  margin: 0 auto;
+  max-width: 720px; }
+  .chart svg {
+    fill: steelblue; }
+/*
+ * Simple CSS stylesheet for a navigation bar and flash messages.
+ */
+
+main {
+  background-color: #eee;
+  padding-bottom: 80px;
+  width: 100%;
+  }
+header {
+  border: 1px solid #d4d4d4;
+  background-image: linear-gradient(to bottom, white, #f2f2f2);
+  background-color: #f9f9f9;
+  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+ul.nav li {
+  display: inline;
+}
+ul.nav li a {
+  padding: 10px 15px 10px;
+  color: #777777;
+  text-decoration: none;
+  text-shadow: 0 1px 0 white;
+}
+.flash_notice, .flash_alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+.flash_notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+.flash_alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+
