@@ -1,0 +1,22 @@
+= provide(:title, "Home")
+
+%h1 Listing user_data
+.userlinks 
+  = link_to 'New User datum', new_user_datum_path
+
+  = link_to 'Log Out', signout_path, :method => :delete, :data => {:confirm => "Are you sure you want to log out?"}
+
+%nav.navigation
+  %ul 
+    - @user_data.sort_by{|e| e[:month]}.each do |user_datum|
+      %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
+.overview
+  .chart 
+  .chartdata
+
+.clear
+
+= debug @user_data
+
+= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.js'
+= javascript_include_tag "showD3Chart.js"

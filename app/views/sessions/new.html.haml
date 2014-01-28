@@ -1,0 +1,13 @@
+= provide(:title, "Sign In")
+%h1 Welcome to MetricApp!
+%p Your number 1 took for analyzing whatever the hell KPI metrics are!
+
+
+= form_for(:session, url: sessions_path) do |f|
+  %label{:for => "email"} Email:
+  %input{:type => "text", :name => "email"}
+
+  %label{:for => "password"} Password:
+  %input{:type => "password", :name => "password"}
+
+  %input{:type => "submit", :value => "Sign In"}

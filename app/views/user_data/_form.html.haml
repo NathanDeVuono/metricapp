@@ -1,0 +1,48 @@
+= form_for @user_datum do |f|
+  = f.hidden_field(:user_id, :value => @user_id)
+
+  = f.label(:month, "Month:")
+  = f.date_select(:month, discard_day: true)
+
+  = f.label(:total_hours_sold, "Total Hours Sold")
+  = f.number_field(:total_hours_sold)
+
+  = f.label(:retail_hours_sold, "Retail Hours Sold")
+  = f.number_field(:retail_hours_sold)
+
+  = f.label(:total_labour_sales, "Total Labour Sales")
+  = f.number_field(:total_labour_sales)
+
+  = f.label(:retail_labour_sales, "Retail Labour Sales")
+  = f.number_field(:retail_labour_sales)
+
+  = f.label(:work_days_per_tech, "Work Days Per Technician")
+  = f.number_field(:work_days_per_tech)
+
+  = f.label(:number_of_techs, "Number of Technicians")
+  = f.number_field(:number_of_techs)
+
+  = f.label(:retail_ro_count, "Retail RO Count")
+  = f.number_field(:retail_ro_count)
+
+  = f.label(:total_gross, "Total Gross")
+  = f.number_field(:total_gross)
+
+  = f.label(:total_variable_expense, "Total Variable Expense")
+  = f.number_field(:total_variable_expense)
+
+  = f.label(:total_salaries, "Total Salaries")
+  = f.number_field(:total_salaries)
+
+
+  - if @user_datum.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user_datum.errors.count, "error")} prohibited this user_datum from being saved:"
+      %ul
+        - @user_datum.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'
+
+= debug @user_datum
