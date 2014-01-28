@@ -11,14 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123152138) do
+ActiveRecord::Schema.define(version: 20140123090448) do
 
-  create_table "microposts", force: true do |t|
-    t.string   "content"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "user_data", force: true do |t|
     t.integer  "total_hours_sold"
@@ -33,8 +29,7 @@ ActiveRecord::Schema.define(version: 20140123152138) do
     t.integer  "total_salaries"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "month",                  limit: 255
-    t.integer  "user_id"
+    t.integer  "month"
   end
 
   create_table "users", force: true do |t|
@@ -46,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140123152138) do
     t.string   "remember_token"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

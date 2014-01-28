@@ -1,9 +1,8 @@
 class CreateUserData < ActiveRecord::Migration
   def change
     create_table :user_data do |t|
-      t.integer :year
-      t.integer :month
-
+      t.datetime :month
+      t.integer :user_id
       t.integer :total_hours_sold
       t.integer :retail_hours_sold
       t.integer :total_labour_sales
