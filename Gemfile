@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Set Ruby version
+ruby "2.0.0"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
@@ -50,7 +53,8 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # Use Haml
 gem 'haml-rails'
 
+# Better Layouts
+gem 'rails_layout'
 
-group :development do
-  gem 'rails_layout'
-end
+
+gem 'rails_12factor', group: :production

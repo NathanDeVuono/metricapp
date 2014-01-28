@@ -44,7 +44,7 @@ class UserDataController < ApplicationController
   def update
     respond_to do |format|
       if @user_datum.update(user_datum_params)
-        format.html { redirect_to user_data_url, notice: 'User datum was successfully updated.' }
+        format.html { redirect_to '/user_data', notice: 'User datum was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
