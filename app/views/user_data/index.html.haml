@@ -8,7 +8,7 @@
 
 %nav.navigation
   %ul 
-    - @user_data.sort_by{|e| e[:month]}.each do |user_datum|
+    - @user_data.each do |user_datum|
       %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
 .overview
   .chart 

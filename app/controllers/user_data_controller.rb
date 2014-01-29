@@ -4,7 +4,7 @@ class UserDataController < ApplicationController
   # GET /user_data
   # GET /user_data.json
   def index
-    @user_data = UserDatum.find_all_by_user_id current_user[:id]
+    @user_data = UserDatum.all.where(user_id: current_user[:id])
   end
 
   # GET /user_data/1
@@ -80,8 +80,8 @@ class UserDataController < ApplicationController
       remember_token = User.encrypt(cookies[:remember_token])
       if !User.find_by(remember_token: remember_token).nil?
         
-        current_user_id = User.find_by(remember_token: remember_token)
-        @user_id = current_user[:id]
+        @current_user = User.find_by(remember_token: remember_token)
+        @user_id = @current_user[:id]
       else
         flash[:error] = "User Data controller says you aren't signed in"
         redirect_to signin_path
