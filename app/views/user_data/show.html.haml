@@ -5,11 +5,16 @@
 %h1
   = @user_datum.month.strftime("%B %Y")
 
+.btn-group
+  = link_to 'Edit', edit_user_datum_path(@user_datum), :class => 'btn btn-default'
+  = link_to 'Delete', @user_datum, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn  btn-default'
+  = link_to 'Back', user_data_path, :class => 'btn  btn-default'
+
 .chart
 
 
 
-%table
+%table.table
   %tr
     %th Total Hours Sold
     %th Retail Hours Sold
@@ -45,11 +50,6 @@
 
   
 
-= link_to 'Edit', edit_user_datum_path(@user_datum)
-\|
-= link_to 'Delete', @user_datum, :method => :delete, :data => { :confirm => 'Are you sure?' }
-\|
-= link_to 'Back', user_data_path
 
 = debug @user_datum
 

@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   def new
     remember_token = User.encrypt(cookies[:remember_token])
-      if !User.find_by(remember_token: remember_token).nil? && (User.find_by(remember_token: remember_token)[:user_id] == 3)
+      if !User.find_by(remember_token: remember_token).nil? && (User.find_by(remember_token: remember_token)[:email] == 'saluma1@live.com')
         
         @current_user = User.find_by(remember_token: remember_token)
         @user_id = @current_user[:id]
       else
         flash[:error] = "Users controller says you aren't the right person!"
-        redirect_to signin_path
+        redirect_to '/user_data'
       end
   end
   def create

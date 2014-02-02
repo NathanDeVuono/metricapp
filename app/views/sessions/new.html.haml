@@ -1,14 +1,25 @@
 = provide(:title, "Sign In")
-%h1 Welcome to MetricApp!
-%p Your number 1 took for analyzing whatever the hell KPI metrics are!
 
+.jumbotron
+  %h1 Welcome to Service KPI Analysis from Saluma Solutions Ltd.
+
+  %p Your "everything you need to know about Service on one page" tool for Dealers and General Managers.
+
+
+- flash.each do |key, msg|
+  %div{ :class => key } 
+    #{msg}
 
 = form_for(:session, url: sessions_path) do |f|
-  %label{:for => "email"} Email:
-  %input{:type => "text", :name => "email"}
+  .container
+    = f.label(:email, "Email: ")
+    .input-group
+      %span.input-group-addon @
+      = f.text_field(:email, placeholder: "sample@email.com", :class => 'form-control')
 
-  %label{:for => "password"} Password:
-  %input{:type => "password", :name => "password"}
+    = f.label(:password, "Password: ")
+    .input-group
+      %span.input-group-addon *
+      = f.password_field(:password, placeholder: "your password", :class => 'form-control')
 
-  %input{:type => "submit", :value => "Sign In"}
-
+    = f.submit "Log In", :class => 'btn btn-primary btn-lg'
