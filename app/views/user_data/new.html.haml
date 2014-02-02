@@ -1,7 +1,17 @@
 = provide(:title, "New Metrics Input")
 
-%h1 New user_datum
+- flash.each do |key, msg|
+  %div{ :class => 'text-center bg-' + key.to_s } 
+    %span{ :class => 'h3 text-' + key.to_s}
+      #{msg}
+      
+.page-header
+  %h1 New user_datum
 
-= render 'form'
+.container
+  .userlinks
+    = link_to 'Back', user_data_path, :class => 'btn btn-default'  
 
-= link_to 'Back', user_data_path
+    = render 'form'
+
+

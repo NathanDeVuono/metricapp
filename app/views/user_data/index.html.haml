@@ -1,28 +1,32 @@
 = provide(:title, "Home")
+- flash.each do |key, msg|
+  %div{ :class => 'text-center bg-' + key.to_s } 
+    %span{ :class => 'h3 text-' + key.to_s}
+      #{msg}
 .page-header
   %h1 
     Listing user_data
     %small 
       Welcome, 
       = @current_user[:name] + '!'
+.container
+  .userlinks 
+    = link_to 'New User datum', new_user_datum_path, :class => 'btn btn-primary'
+    
+    = if correct_user?
+      - link_to 'Register a New User', '/register', :class => 'btn'
 
-.userlinks 
-  = link_to 'New User datum', new_user_datum_path, :class => 'btn btn-primary'
-  
-  = if correct_user?
-    - link_to 'Register a New User', '/register', :class => 'btn'
+    = link_to 'Log Out', signout_path, :method => :delete, :data => {:confirm => "Are you sure you want to log out?"}, :class => 'btn btn-default'
 
-  = link_to 'Log Out', signout_path, :method => :delete, :data => {:confirm => "Are you sure you want to log out?"}, :class => 'btn btn-default'
+  %nav.navigation
+    %ul 
+      - @user_data.each do |user_datum|
+        %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
+  .overview
+    .chart 
+    .chartdata
 
-%nav.navigation
-  %ul 
-    - @user_data.each do |user_datum|
-      %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
-.overview
-  .chart 
-  .chartdata
-
-.clear
+  .clear
 
 = debug @user_data
 

@@ -1,8 +1,17 @@
-= provide(:title, "Edit Metrics")
-%h1 Editing user_datum
+= provide(:title, "Editing " + @user_datum[:month].strftime("%B, %Y"))
 
-= render 'form'
+- flash.each do |key, msg|
+  %div{ :class => 'text-center bg-' + key.to_s } 
+    %span{ :class => 'h3 text-' + key.to_s}
+      #{msg}
 
-= link_to 'Show', @user_datum
-\|
-= link_to 'Back', user_data_path
+.page-header
+  %h1
+    Editing
+    = @user_datum[:month].strftime("%B, %Y")
+.container
+  .userlinks
+    = link_to 'Back', user_data_path, :class => 'btn btn-default'
+  = render 'form'
+
+  

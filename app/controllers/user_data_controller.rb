@@ -30,7 +30,8 @@ class UserDataController < ApplicationController
 
     respond_to do |format|
       if @user_datum.save
-        format.html { redirect_to @user_datum, notice: 'User datum was successfully created.' }
+        flash.now[:success] = 'User datum was successfully created.'
+        format.html { redirect_to @user_datum}
         format.json { render action: 'show', status: :created, location: @user_datum }
       else
         format.html { render action: 'new' }
@@ -44,7 +45,8 @@ class UserDataController < ApplicationController
   def update
     respond_to do |format|
       if @user_datum.update(user_datum_params)
-        format.html { redirect_to '/user_data', notice: 'User datum was successfully updated.' }
+        flash.now[:success] = 'User datum was successfully updated.'
+        format.html { redirect_to '/user_data'}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -83,7 +85,7 @@ class UserDataController < ApplicationController
         @current_user = User.find_by(remember_token: remember_token)
         @user_id = @current_user[:id]
       else
-        flash[:error] = "User Data controller says you aren't signed in"
+        flash[:danger] = "User Data controller says you aren't signed in"
         redirect_to signin_path
       end
       

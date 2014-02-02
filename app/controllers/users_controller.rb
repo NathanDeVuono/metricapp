@@ -6,7 +6,7 @@ class UsersController < ApplicationController
         @current_user = User.find_by(remember_token: remember_token)
         @user_id = @current_user[:id]
       else
-        flash[:error] = "Users controller says you aren't the right person!"
+        flash[:danger] = "Users controller says you aren't the right person!"
         redirect_to '/user_data'
       end
   end

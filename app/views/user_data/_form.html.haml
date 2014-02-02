@@ -1,38 +1,61 @@
-= form_for @user_datum do |f|
+= form_for @user_datum  do |f|
   = f.hidden_field(:user_id, :value => @user_id)
 
-  = f.label(:month, "Month:")
-  = f.date_select(:month, discard_day: true)
+  .form-group
+    = f.label(:month, "Month:", :class => 'control-label')
+    = f.date_select(:month, discard_day: true, :class => 'form-control')
 
-  = f.label(:total_hours_sold, "Total Hours Sold")
-  = f.number_field(:total_hours_sold)
+  .form-group.col-xs-6
+    = f.label(:total_gross, "Total Gross", :class => 'control-label')
+    .input-group
+      %span.input-group-addon $
+      = f.number_field(:total_gross, :class => 'form-control')
+  
+  .form-group.col-xs-6
+    = f.label(:total_variable_expense, "Total Variable Expense", :class => 'control-label')
+    .input-group
+      %span.input-group-addon $
+      = f.number_field(:total_variable_expense, :class => 'form-control', :placeholder => 'Total Variable Expense')
+  
+  .form-group.col-xs-6
+    = f.label(:total_salaries, "Total Salaries", :class => 'control-label')
+    .input-group
+      %span.input-group-addon $
+      = f.number_field(:total_salaries, :class => 'form-control', :placeholder => 'Total Salaries')  
 
-  = f.label(:retail_hours_sold, "Retail Hours Sold")
-  = f.number_field(:retail_hours_sold)
+  .form-group.col-xs-6
+    = f.label(:total_labour_sales, "Total Labour Sales", :class => 'control-label')
+    .input-group
+      %span.input-group-addon $
+      = f.number_field(:total_labour_sales, :class => 'form-control', :placeholder => 'Total Labour Sales')
 
-  = f.label(:total_labour_sales, "Total Labour Sales")
-  = f.number_field(:total_labour_sales)
+  .form-group.col-xs-6
+    = f.label(:retail_labour_sales, "Retail Labour Sales", :class => 'control-label')
+    .input-group
+      %span.input-group-addon $
+      = f.number_field(:retail_labour_sales, :class => 'form-control', :placeholder => 'Retail Labour Sales')
+  
+  .form-group.col-xs-6
+    = f.label(:number_of_techs, "Number of Technicians", :class => 'control-label')
+    = f.number_field(:number_of_techs, :class => 'form-control', :placeholder => 'Number of Technicians')
+  
+  .form-group.col-xs-6
+    = f.label(:work_days_per_tech, "Work Days Per Technician", :class => 'control-label')
+    = f.number_field(:work_days_per_tech, :class => 'form-control', :placeholder => 'Work Days Per Technician')
 
-  = f.label(:retail_labour_sales, "Retail Labour Sales")
-  = f.number_field(:retail_labour_sales)
+  .form-group.col-xs-6
+    = f.label(:retail_ro_count, "Retail RO Count", :class => 'control-label')
+    = f.number_field(:retail_ro_count, :class => 'form-control', :placeholder => 'Retail RO Count')
 
-  = f.label(:work_days_per_tech, "Work Days Per Technician")
-  = f.number_field(:work_days_per_tech)
+  .form-group.col-xs-6
+    = f.label(:retail_hours_sold, "Retail Hours Sold", :class => 'control-label')
+    = f.number_field(:retail_hours_sold, :class => 'form-control', :placeholder => 'Retail Hours Sold')
 
-  = f.label(:number_of_techs, "Number of Technicians")
-  = f.number_field(:number_of_techs)
+  .form-group.col-xs-6
+    = f.label(:total_hours_sold, "Total Hours Sold", :class => 'control-label')
+    = f.number_field(:total_hours_sold, :class => 'form-control', :placeholder => 'Total Hours Sold')
 
-  = f.label(:retail_ro_count, "Retail RO Count")
-  = f.number_field(:retail_ro_count)
 
-  = f.label(:total_gross, "Total Gross")
-  = f.number_field(:total_gross)
-
-  = f.label(:total_variable_expense, "Total Variable Expense")
-  = f.number_field(:total_variable_expense)
-
-  = f.label(:total_salaries, "Total Salaries")
-  = f.number_field(:total_salaries)
 
 
   - if @user_datum.errors.any?
@@ -43,6 +66,6 @@
           %li= msg
 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => 'btn btn-primary'
 
 = debug @user_datum
