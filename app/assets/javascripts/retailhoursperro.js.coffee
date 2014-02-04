@@ -1,24 +1,25 @@
 data = [
-            413,234,314,243,523,143,233,312,413,234
-          ]
+        $( '.' + new Date().getFullYear() + '.retail_hours_sold').text().trim() / $( '.' + new Date().getFullYear() + '.retail_ro_count').text().trim()
+       ]
 chartHeight = 500
 
 # w = document.getElementsByClassName("chart").clientWidth
 # h = document.getElementsByClassName("chart").clientHeight
 
-w = 720
-h = 500
+w = 144000
+h = 100000
 
-chart = d3.select(".chart")
+chart = d3.select(".splash_charts")
   .append("svg")
-  .attr("width", '100%')
-  .attr("height", '100%')
+  .attr('class', 'chart')
+  .attr("width", '40%')
+  .attr("height", '40%')
   .attr('viewBox','0 0 '+ w + ' ' + h )
   .attr('preserveAspectRatio','xMinYMin')
 
 chart.selectAll("rect").data(data).enter()
   .append("rect")
-   .attr("x", (d, i) -> i * (w * .1))
+   .attr("x", (d, i) -> i * (w * .083))
    .attr("y", (d, i) -> h - d)
-   .attr("width", (w * .08))
+   .attr("width", (w * .075))
    .attr("height", (d) -> d);

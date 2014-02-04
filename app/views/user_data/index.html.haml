@@ -23,12 +23,35 @@
       - @user_data.each do |user_datum|
         %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
   .overview
-    .chart 
-    .chartdata
+    .splash_charts 
+    .datadump
+      - @user_data.each do |user_datum|
+        %div{ :class => user_datum[:month].strftime("%Y")}
+          %span{ :class => 'total_hours_sold'}
+            = user_datum[:total_hours_sold]
+          %span{ :class => 'retail_hours_sold'}
+            = user_datum[:retail_hours_sold]
+          %span{ :class => 'total_labour_sales'}
+            = user_datum[:total_labour_sales]
+          %span{ :class => 'retail_labour_sales'}
+            = user_datum[:retail_labour_sales]
+          %span{ :class => 'number_of_techs'}
+            = user_datum[:number_of_techs]
+          %span{ :class => 'work_days_per_tech'}
+            = user_datum[:work_days_per_tech]
+          %span{ :class => 'retail_ro_count'}
+            = user_datum[:retail_ro_count]
+          %span{ :class => 'total_variable_expense'}
+            = user_datum[:total_variable_expense]
+          %span{ :class => 'total_salaries'}
+            = user_datum[:total_salaries]
 
   .clear
 
 = debug @user_data
 
 = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.js'
-= javascript_include_tag "showD3Chart"
+= javascript_include_tag "retailhoursperro"
+= javascript_include_tag 'hourspertechperday'
+= javascript_include_tag 'retailrocount'
+= javascript_include_tag 'effectivelabourrate'

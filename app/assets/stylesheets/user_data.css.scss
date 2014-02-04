@@ -1,4 +1,21 @@
 // Place all the styles related to the UserData controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.navigation {
+  float:left;
+}
+.overview {
+  float:left;
+  min-width:80%;
+}
+.splash_charts {
+  height:500px;
+  margin:0 auto;
+  max-width:720px;
+  svg {
+    fill:steelblue;
+  }
+  .chart {
+    margin:5%;
+  }
+}
