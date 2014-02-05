@@ -1,7 +1,6 @@
 year = new Date().getFullYear()
-data = [
-        $( '.' + year + ' .retail_hours_sold').text().trim() / $( '.' + year + ' .retail_ro_count').text().trim()
-       ]
+data =  for i in [1 .. 12]
+          $( '.' + year + '.' + i + ' .retail_hours_sold').text().trim() / $( '.' + year + '.' + i + ' .retail_ro_count').text().trim()
 
 
 w = 4.32

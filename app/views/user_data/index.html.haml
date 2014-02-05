@@ -26,7 +26,9 @@
     .splash_charts 
     .datadump
       - @user_data.each do |user_datum|
-        %div{ :class => user_datum[:month].strftime("%Y")}
+        - chart_data_classes = [user_datum[:month].strftime("%Y"), user_datum[:month].strftime("%-m")]
+
+        %div{ :class => chart_data_classes }
           %span{ :class => 'total_hours_sold'}
             = user_datum[:total_hours_sold]
           %span{ :class => 'retail_hours_sold'}

@@ -1,11 +1,6 @@
 year = new Date().getFullYear()
-data = [
-        $('.' + year + ' .total_hours_sold').text().trim() / $('.' + year + ' .work_days_per_tech').text().trim() / $('.' + year + ' .number_of_techs').text().trim()
-       ]
-chartHeight = 500
-
-# w = document.getElementsByClassName("chart").clientWidth
-# h = document.getElementsByClassName("chart").clientHeight
+data = for i in [1 .. 12]
+          $('.' + year + '.' + i + ' .total_hours_sold').text().trim() / $('.' + year + '.' + i + ' .work_days_per_tech').text().trim() / $('.' + year + '.' + i + ' .number_of_techs').text().trim()
 
 w = 14.4000
 h = 10.0000

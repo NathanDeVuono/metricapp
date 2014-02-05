@@ -1,7 +1,7 @@
 year = new Date().getFullYear()
-data = [
-        $( '.' + year + ' .retail_ro_count').text().trim()
-       ]
+data =  for i in [1 .. 12]
+          $( '.' + year + '.' + i + ' .retail_ro_count').text().trim()
+
 
 w = 432
 h = 300

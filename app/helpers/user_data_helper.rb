@@ -8,4 +8,7 @@ module UserDataHelper
       return true
     end
   end
+  def chart_data_classes
+    chart_data_classes = [user_datum[:month].strftime("%Y"), user_datum[:month].strftime("%-m")]
+  end
 end
