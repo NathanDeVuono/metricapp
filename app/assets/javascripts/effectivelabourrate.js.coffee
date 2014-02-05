@@ -1,9 +1,10 @@
+year = new Date().getFullYear()
 data = [
-        $( '.' + new Date().getFullYear() + '.retail_labour_sales').text().trim() / $( '.' + new Date().getFullYear() + '.retail_hours_sold').text().trim()
+        $('.' + year + ' .retail_labour_sales').text().trim() / $( '.' + year + ' .retail_hours_sold').text().trim()
        ]
 
-w = 144000
-h = 100000
+w = 144
+h = 100
 
 chart = d3.select(".splash_charts")
   .append("svg")

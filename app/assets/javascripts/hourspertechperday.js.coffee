@@ -1,5 +1,6 @@
+year = new Date().getFullYear()
 data = [
-        $( new Date().getFullYear() + '.total_hours_sold').text().trim() / $('.2009 .work_days_per_tech').text().trim() / $('.2009 .number_of_techs').text().trim()
+        $('.' + year + ' .total_hours_sold').text().trim() / $('.' + year + ' .work_days_per_tech').text().trim() / $('.' + year + ' .number_of_techs').text().trim()
        ]
 chartHeight = 500
 
@@ -20,6 +21,6 @@ chart = d3.select(".splash_charts")
 chart.selectAll("rect").data(data).enter()
   .append("rect")
    .attr("x", (d, i) -> i * (w * .083))
-   .attr("y", (d, i) -> h - (d * 10000))
+   .attr("y", (d, i) -> h - (d))
    .attr("width", (w * .075))
-   .attr("height", (d) -> (d * 10000));
+   .attr("height", (d) -> (d));

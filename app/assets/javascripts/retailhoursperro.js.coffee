@@ -1,13 +1,11 @@
+year = new Date().getFullYear()
 data = [
-        $( '.' + new Date().getFullYear() + '.retail_hours_sold').text().trim() / $( '.' + new Date().getFullYear() + '.retail_ro_count').text().trim()
+        $( '.' + year + ' .retail_hours_sold').text().trim() / $( '.' + year + ' .retail_ro_count').text().trim()
        ]
-chartHeight = 500
 
-# w = document.getElementsByClassName("chart").clientWidth
-# h = document.getElementsByClassName("chart").clientHeight
 
-w = 144000
-h = 100000
+w = 4.32
+h = 3
 
 chart = d3.select(".splash_charts")
   .append("svg")

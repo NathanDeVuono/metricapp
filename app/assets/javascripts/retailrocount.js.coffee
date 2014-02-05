@@ -1,9 +1,10 @@
+year = new Date().getFullYear()
 data = [
-        $( '.' + new Date().getFullYear() + '.retail_ro_count').text().trim()
+        $( '.' + year + ' .retail_ro_count').text().trim()
        ]
 
-w = 288
-h = 200
+w = 432
+h = 300
 
 chart = d3.select(".splash_charts")
   .append("svg")

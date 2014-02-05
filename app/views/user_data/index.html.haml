@@ -11,7 +11,7 @@
       = @current_user[:name] + '!'
 .container
   .userlinks 
-    = link_to 'New User datum', new_user_datum_path, :class => 'btn btn-primary'
+    = link_to 'Input New Metrics', new_user_datum_path, :class => 'btn btn-primary'
     
     = if correct_user?
       - link_to 'Register a New User', '/register', :class => 'btn btn-default'
