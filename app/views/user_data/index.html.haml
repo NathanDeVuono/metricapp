@@ -23,13 +23,15 @@
       - @user_data.each do |user_datum|
         %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
   .overview
-    .splash_charts 
+    .splash_charts
     .datadump
       - @user_data.each do |user_datum|
-        - chart_data_classes = [user_datum[:month].strftime("%Y"), user_datum[:month].strftime("%-m")]
+        - chart_data_classes = [user_datum[:month].strftime("%Y"), user_datum[:month].strftime('%_m')]
 
         %div{ :class => chart_data_classes }
+          = user_datum[:month].strftime('%_m')
           %span{ :class => 'total_hours_sold'}
+
             = user_datum[:total_hours_sold]
           %span{ :class => 'retail_hours_sold'}
             = user_datum[:retail_hours_sold]
@@ -48,12 +50,7 @@
           %span{ :class => 'total_salaries'}
             = user_datum[:total_salaries]
 
-  .clear
-
-= debug @user_data
+    .clearfix
 
 = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.js'
-= javascript_include_tag "retailhoursperro"
 = javascript_include_tag 'hourspertechperday'
-= javascript_include_tag 'retailrocount'
-= javascript_include_tag 'effectivelabourrate'

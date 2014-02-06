@@ -1,14 +1,16 @@
-year = new Date().getFullYear()
+var year = new Date().getFullYear()
 
-data = for i in [1 .. 12]
-          $('.' + year + '.' + i + ' .retail_labour_sales').text().trim() / $( '.' + year + '.' + i + ' .retail_hours_sold').text().trim()
+function retailhoursperro (year) {
+  data =  for i in [1 .. 12]
+          $( '.' + year + '.' + i + ' .retail_hours_sold').text().trim() / $( '.' + year + '.' + i + ' .retail_ro_count').text().trim()
 
-w = 144
-h = 100
+
+w = 4.32
+h = 3
 
 chart = d3.select(".splash_charts")
   .append('div')
-  .attr('class', 'effectivelabourrate')
+  .attr('class', 'retailhoursperro')
     .append("svg")
     .attr('class', 'chart')
     .attr('viewBox','0 0 '+ w + ' ' + h )
@@ -20,4 +22,5 @@ chart.selectAll("rect").data(data).enter()
    .attr("y", (d, i) -> h - d)
    .attr("width", (w * .075))
    .attr("height", (d) -> d)
-   .append('svg:title').text('Effective Labour Rate')
+   .append('svg:title').text('Retail Hours Per RO')
+}

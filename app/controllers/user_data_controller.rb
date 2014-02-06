@@ -85,7 +85,7 @@ class UserDataController < ApplicationController
         @current_user = User.find_by(remember_token: remember_token)
         @user_id = @current_user[:id]
       else
-        flash[:danger] = "User Data controller says you aren't signed in"
+        flash[:danger] = "Please log in"
         redirect_to signin_path
       end
       
