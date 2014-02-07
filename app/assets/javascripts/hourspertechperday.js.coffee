@@ -1,7 +1,30 @@
-year = new Date().getFullYear()
-months = $('.' + year + '.total_hours_sold').length
-data = for i in [1 .. months]
-          $('.' + year + '.' + i + ' .total_hours_sold').text().trim() / $('.' + year + '.' + i + ' .work_days_per_tech').text().trim() / $('.' + year + '.' + i + ' .number_of_techs').text().trim()
+select_ths = $('.total_hours_sold')
+ths = ''
+for i in [ 1 .. select_ths.length ]
+  ths#{i} = select_ths[#{i}].dataset
+
+select_wdpt = $('.work_days_per_tech')
+wdpt = ''
+for i in [ 1 .. select_wdpt.length ]
+  wdpt#{i} = select_wdpt[#{i}].dataset
+
+select_numtechs = $('.number_of_techs')
+numtechs = ''
+for i in [ 1 .. select_numtechs.length ]
+  numtechs#{i} = select_numtechs[#{i}].dataset
+
+data = [
+      for i in [1 .. select_ths.length]
+        {
+          month: ths#{i}.month,
+          value: (
+            ths#{i}.totalHoursSold / wdpt#{i}.workDaysPerTech / numtechs#{i}.numberOfTechs
+          )
+        }
+       ]
+
+  # for i in [1 .. months]
+    # $('.' + year + '.' + i + ' .total_hours_sold').text().trim() / $('.' + year + '.' + i + ' .work_days_per_tech').text().trim() / $('.' + year + '.' + i + ' .number_of_techs').text().trim()
 
 w = 14.4000
 h = 10.0000

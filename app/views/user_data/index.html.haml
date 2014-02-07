@@ -25,32 +25,21 @@
   .overview
     .splash_charts
     .datadump
-      - @user_data.each do |user_datum|
-        - chart_data_classes = [user_datum[:month].strftime("%Y"), user_datum[:month].strftime('%_m')]
-
-        %div{ :class => chart_data_classes }
-          = user_datum[:month].strftime('%_m')
-          %span{ :class => 'total_hours_sold'}
-
-            = user_datum[:total_hours_sold]
-          %span{ :class => 'retail_hours_sold'}
-            = user_datum[:retail_hours_sold]
-          %span{ :class => 'total_labour_sales'}
-            = user_datum[:total_labour_sales]
-          %span{ :class => 'retail_labour_sales'}
-            = user_datum[:retail_labour_sales]
-          %span{ :class => 'number_of_techs'}
-            = user_datum[:number_of_techs]
-          %span{ :class => 'work_days_per_tech'}
-            = user_datum[:work_days_per_tech]
-          %span{ :class => 'retail_ro_count'}
-            = user_datum[:retail_ro_count]
-          %span{ :class => 'total_variable_expense'}
-            = user_datum[:total_variable_expense]
-          %span{ :class => 'total_salaries'}
-            = user_datum[:total_salaries]
+      - year_ago = (12.months.ago) .. (Time.now)
+      - @user_data.where(month: year_ago).each do |user_datum|
+        %div{ :class => 'total_hours_sold', :data => {month: user_datum[:month], total_hours_sold: user_datum[:total_hours_sold] }}
+        %div{ :class => 'retail_hours_sold', :data => {month: user_datum[:month], retail_hours_sold: user_datum[:retail_hours_sold] }}
+        %div{ :class => 'total_labour_sales', :data => {month: user_datum[:month], total_labour_sales: user_datum[:total_labour_sales] }}
+        %div{ :class => 'retail_labour_sales', :data => {month: user_datum[:month], retail_labour_sales: user_datum[:retail_labour_sales] }}
+        %div{ :class => 'number_of_techs', :data => {month: user_datum[:month], number_of_techs: user_datum[:number_of_techs] }}
+        %div{ :class => 'work_days_per_tech', :data => {month: user_datum[:month], work_days_per_tech: user_datum[:work_days_per_tech] }}
+        %div{ :class => 'retail_ro_count', :data => {month: user_datum[:month], retail_ro_count: user_datum[:retail_ro_count] }}
+        %div{ :class => 'total_variable_expense', :data => {month: user_datum[:month], total_variable_expense: user_datum[:total_variable_expense] }}
+        %div{ :class => 'total_salaries', :data => {month: user_datum[:month], total_salaries: user_datum[:total_salaries] }}
 
     .clearfix
+
+= debug @user_data.where(month: year_ago)
 
 = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.js'
 = javascript_include_tag 'hourspertechperday'
