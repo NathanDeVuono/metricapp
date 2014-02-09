@@ -40,10 +40,15 @@
         %div{ :class => 'retail_ro_count', :data => {month: user_datum[:month].strftime('%b, %Y'), retail_ro_count: user_datum[:retail_ro_count] }}
         %div{ :class => 'total_variable_expense', :data => {month: user_datum[:month].strftime('%b, %Y'), total_variable_expense: user_datum[:total_variable_expense] }}
         %div{ :class => 'total_salaries', :data => {month: user_datum[:month].strftime('%b, %Y'), total_salaries: user_datum[:total_salaries] }}
-
+        %div{ :class => 'total_gross', :data => {month: user_datum[:month].strftime('%b, %Y'), total_gross: user_datum[:total_gross] }}
     .clearfix
-
+  %h2 Paragraph summaries
+  %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+  %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. 
+  %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. 
+  %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.  
 .container-fluid
+  %h1 Detailed Statistics
   .detail_charts
 = debug @user_data.where(month: year_ago)
 
@@ -57,3 +62,5 @@
 = javascript_include_tag 'hourspertechperday'
 = javascript_include_tag 'retailrocount'
 = javascript_include_tag 'effectivelabourrate'
+= javascript_include_tag 'salariespercentgross'
+= javascript_include_tag 'variableexpaspercentgross'

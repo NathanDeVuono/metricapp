@@ -20,9 +20,9 @@
   }
   div {
     float:left;
-    width:40%;
+    width:30%;
     height:40%;
-    margin:5%;
+    margin:10%;
     margin-top:50px;
     &:before {
       position:relative;
@@ -83,5 +83,17 @@
 .effectivelabourrate {
   &:before {
     content: 'Effective Labour Rate';
+  }
+}
+
+.salariespercentgross {
+  &:before {
+    content: 'Salaries as % of Gross';
+  }
+}
+
+.variableexpaspercentgross {
+  &:before {
+    content: 'Expenses as % of Gross';
   }
 }
