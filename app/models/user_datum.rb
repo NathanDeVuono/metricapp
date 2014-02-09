@@ -1,4 +1,6 @@
 class UserDatum < ActiveRecord::Base
+  
+  
   validates :month, presence: true
   validates :total_hours_sold, presence: true
   validates :retail_hours_sold, presence: true

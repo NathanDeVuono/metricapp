@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140206114518) do
+ActiveRecord::Schema.define(version: 20140209093327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "goals", force: true do |t|
+    t.integer  "retail_hrs_per_ro"
+    t.integer  "elr_retail"
+    t.integer  "retail_ro_count"
+    t.integer  "tech_hrs_per_day"
+    t.integer  "salaries_as_percent_gross"
+    t.integer  "other_as_percent_gross"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "user_data", force: true do |t|
     t.integer  "user_id"

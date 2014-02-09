@@ -3,6 +3,9 @@
   %div{ :class => 'text-center bg-' + key.to_s } 
     %span{ :class => 'h3 text-' + key.to_s}
       #{msg}
+
+- year_ago = (12.months.ago) .. (Time.now)
+.container-fluid
 .page-header
   %h1 
     KPI Analysis
@@ -22,14 +25,17 @@
 
 %nav.navigation
   %ul 
-    - @user_data.each do |user_datum|
-      %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
-
+    - if @user_data.where(month: year_ago) != []
+      - @user_data.each do |user_datum|
+        %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
+    
+  = link_to 'Input New Metrics', new_user_datum_path, :class => 'btn btn-primary'
 .container
   .overview
     .splash_charts
-    .datadump
-      - year_ago = (12.months.ago) .. (Time.now)
+      
+          
+    .datadump<
       - @user_data.where(month: year_ago).order([:month]).each do |user_datum|
         %div{ :class => 'total_hours_sold', :data => {month: user_datum[:month].strftime('%b, %Y'), total_hours_sold: user_datum[:total_hours_sold] }}
         %div{ :class => 'retail_hours_sold', :data => {month: user_datum[:month].strftime('%b, %Y'), retail_hours_sold: user_datum[:retail_hours_sold] }}
@@ -41,7 +47,7 @@
         %div{ :class => 'total_variable_expense', :data => {month: user_datum[:month].strftime('%b, %Y'), total_variable_expense: user_datum[:total_variable_expense] }}
         %div{ :class => 'total_salaries', :data => {month: user_datum[:month].strftime('%b, %Y'), total_salaries: user_datum[:total_salaries] }}
         %div{ :class => 'total_gross', :data => {month: user_datum[:month].strftime('%b, %Y'), total_gross: user_datum[:total_gross] }}
-    .clearfix
+  .clearfix
   %h2 Paragraph summaries
   %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
   %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. 
@@ -50,16 +56,22 @@
 .container-fluid
   %h1 Detailed Statistics
   .detail_charts
+:coffeescript
+  datadump = $('.datadump')
+  splashcharts = $('.splash_charts')
+  detailcharts = $('.detail_charts')
+  splashcharts.append('<p class="h2"><small>Sorry, no metrics to process... Yet!</small></p>') if datadump[0].innerHTML == ''
+  detailcharts.append('<p class="h2"><small>Sorry, no metrics to process... Yet!</small></p>') if datadump[0].innerHTML == ''
+- if @user_data.where(month: year_ago) != []
+  = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.js'
+  = javascript_include_tag 'retailhoursperroSplash'
+  = javascript_include_tag 'hourspertechperdaySplash'
+  = javascript_include_tag 'retailrocountSplash'
+  = javascript_include_tag 'effectivelabourrateSplash'
 
-= javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.js'
-= javascript_include_tag 'retailhoursperroSplash'
-= javascript_include_tag 'hourspertechperdaySplash'
-= javascript_include_tag 'retailrocountSplash'
-= javascript_include_tag 'effectivelabourrateSplash'
-
-= javascript_include_tag 'retailhoursperro'
-= javascript_include_tag 'hourspertechperday'
-= javascript_include_tag 'retailrocount'
-= javascript_include_tag 'effectivelabourrate'
-= javascript_include_tag 'salariespercentgross'
-= javascript_include_tag 'variableexpaspercentgross'
+  = javascript_include_tag 'retailhoursperro'
+  = javascript_include_tag 'hourspertechperday'
+  = javascript_include_tag 'retailrocount'
+  = javascript_include_tag 'effectivelabourrate'
+  = javascript_include_tag 'salariespercentgross'
+  = javascript_include_tag 'variableexpaspercentgross'

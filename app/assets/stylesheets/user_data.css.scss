@@ -1,8 +1,19 @@
 // Place all the styles related to the UserData controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1 {
+  text-indent: 1em;
+}
 .navigation {
   float:left;
+  margin:20px;
+  ul {
+    list-style-type: none;
+    li {
+      margin-left:-2em;
+    }
+  }
 }
 .overview {
   float:left;
@@ -10,6 +21,7 @@
 }
 .userlinks {
   float:right;
+  margin:20px;
 }
 .splash_charts {
   height:500px;
@@ -58,7 +70,7 @@
 }
 
 .datadump {
-  // display:none;
+  display:none;
 }
 
 .retailhoursperro {

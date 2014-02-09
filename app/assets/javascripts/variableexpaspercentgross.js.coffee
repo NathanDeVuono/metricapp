@@ -6,7 +6,7 @@ for i in [ 1 .. select_expense.length ]
   gross = select_gross[(i - 1)].dataset
   
   data.push [ month: expense.month, value: (( expense.totalVariableExpense / gross.totalGross ) * 100).toFixed(2) ]...
-  console.log(data)
+
 barWidth = 50;
 width = (barWidth + 5) * data.length;
 height = 100;
