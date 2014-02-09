@@ -1,13 +1,8 @@
-select_ths = $('.total_hours_sold')
-select_wdpt = $('.work_days_per_tech')
-select_numtechs = $('.number_of_techs')
+select = $('.retail_ro_count')
 data = []
-for i in [ 1 .. select_ths.length ]
-  ths = select_ths[(i - 1)].dataset
-  wdpt = select_wdpt[(i - 1)].dataset
-  numtechs = select_numtechs[(i - 1)].dataset
-  
-  data.push [ month: ths.month, value: ( ths.totalHoursSold / wdpt.workDaysPerTech / numtechs.numberOfTechs ).toFixed(2) ]...
+for i in [ 1 .. select.length ]
+  rrocount = select[(i - 1)].dataset
+  data.push [ month: rrocount.month, value: rrocount.retailRoCount ]...
 
 barWidth = 50;
 width = (barWidth + 5) * data.length;
@@ -23,9 +18,9 @@ y = d3.scale.linear().
   range([0, height])
 
 # add the canvas to the DOM
-chart = d3.select(".detail_charts").
+chart = d3.select(".splash_charts").
   append('div').
-  attr('class', 'hourspertechperday').
+  attr('class', 'retailrocount').
   append("svg:svg").
   attr("width", width).
   attr("height", height).

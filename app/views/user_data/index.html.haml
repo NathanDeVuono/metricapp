@@ -9,19 +9,23 @@
     %small 
       Welcome, 
       = @current_user[:name] + '!'
-.container
-  .userlinks 
-    = link_to 'Input New Metrics', new_user_datum_path, :class => 'btn btn-primary'
+
+.userlinks 
+  = link_to 'Input New Metrics', new_user_datum_path, :class => 'btn btn-primary'
     
-    = if correct_user?
-      - link_to 'Register a New User', '/register', :class => 'btn btn-default'
+    
 
-    = link_to 'Log Out', signout_path, :method => :delete, :data => {:confirm => "Are you sure you want to log out?"}, :class => 'btn btn-default'
+  = if correct_user?
+    - link_to 'Register a New User', '/register', :class => 'btn btn-default'
 
-  %nav.navigation
-    %ul 
-      - @user_data.each do |user_datum|
-        %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
+  = link_to 'Log Out', signout_path, :method => :delete, :data => {:confirm => "Are you sure you want to log out?"}, :class => 'btn btn-default'
+
+%nav.navigation
+  %ul 
+    - @user_data.each do |user_datum|
+      %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
+
+.container
   .overview
     .splash_charts
     .datadump
@@ -39,8 +43,17 @@
 
     .clearfix
 
+.container-fluid
+  .detail_charts
 = debug @user_data.where(month: year_ago)
 
 = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.js'
+= javascript_include_tag 'retailhoursperroSplash'
+= javascript_include_tag 'hourspertechperdaySplash'
+= javascript_include_tag 'retailrocountSplash'
+= javascript_include_tag 'effectivelabourrateSplash'
+
 = javascript_include_tag 'retailhoursperro'
 = javascript_include_tag 'hourspertechperday'
+= javascript_include_tag 'retailrocount'
+= javascript_include_tag 'effectivelabourrate'

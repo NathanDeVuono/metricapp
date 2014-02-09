@@ -7,9 +7,9 @@ for i in [ 1 .. select_rhs.length ]
   
   data.push [ month: rhs.month, value: ( rhs.retailHoursSold / rocount.retailRoCount ).toFixed(2) ]...
 
-barWidth = 40;
-width = (barWidth + 15) * data.length;
-height = 200;
+barWidth = 50;
+width = (barWidth + 5) * data.length;
+height = 100;
 
 x = d3.scale.linear()
   .domain([0, data.length])
@@ -21,11 +21,13 @@ y = d3.scale.linear().
   range([0, height])
 
 # add the canvas to the DOM
-chart = d3.select(".splash_charts").
+chart = d3.select(".detail_charts").
   append('div').
+  attr('class', 'retailhoursperro').
   append("svg:svg").
   attr("width", width).
   attr("height", height).
+  attr('viewBox','0 0 '+ width + ' ' + height ).
   attr('preserveAspectRatio','xMinYMin')
 
 chart.selectAll("rect").
@@ -36,7 +38,6 @@ chart.selectAll("rect").
     x(i)
     ).
   attr("y", (d) ->  
-    console.log(d)
     (height - y(d.value))
     ).
   attr("height", (d) -> 
@@ -61,7 +62,7 @@ chart.selectAll("text").
   text((d) -> d.value).
   attr("fill", "white");
 
-chart.selectAll("text.yAxis").
+chart.selectAll("text.xAxis").
   data(data).
   enter().append("svg:text").
   attr("x", (d, i) -> 
@@ -70,7 +71,7 @@ chart.selectAll("text.yAxis").
   attr("y", height).
   attr("dx", barWidth/2).
   attr("text-anchor", "middle").
-  attr("style", "font-size: 12px; font-family: Helvetica, sans-serif;").
+  attr("style", "font-size: 10px; font-family: Helvetica, sans-serif;").
   text((d) -> d.month).
-  attr("transform", "translate(0, 18)").
-  attr("class", "yAxis");
+  attr("transform", "translate(0, 12)").
+  attr("class", "xAxis");

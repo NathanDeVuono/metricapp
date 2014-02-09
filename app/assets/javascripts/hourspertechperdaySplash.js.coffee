@@ -23,7 +23,7 @@ y = d3.scale.linear().
   range([0, height])
 
 # add the canvas to the DOM
-chart = d3.select(".detail_charts").
+chart = d3.select(".splash_charts").
   append('div').
   attr('class', 'hourspertechperday').
   append("svg:svg").
