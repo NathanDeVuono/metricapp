@@ -50,7 +50,6 @@
 .container-fluid
   %h1 Detailed Statistics
   .detail_charts
-= debug @user_data.where(month: year_ago)
 
 = javascript_include_tag '//cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.js'
 = javascript_include_tag 'retailhoursperroSplash'
