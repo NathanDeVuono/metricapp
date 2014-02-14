@@ -1,10 +1,12 @@
 class UserDataController < ApplicationController
   before_action :set_user_datum, only: [:show, :edit, :update, :destroy]
   before_filter :get_current_user_id
+  before_filter :get_goals
   # GET /user_data
   # GET /user_data.json
   def index
     @user_data = UserDatum.all.where(user_id: current_user[:id])
+    
   end
 
   # GET /user_data/1
@@ -30,7 +32,7 @@ class UserDataController < ApplicationController
 
     respond_to do |format|
       if @user_datum.save
-        flash.now[:success] = 'User datum was successfully created.'
+        flash.now[:success] = 'Metrics were successfully added.'
         format.html { redirect_to @user_datum}
         format.json { render action: 'show', status: :created, location: @user_datum }
       else
@@ -45,7 +47,7 @@ class UserDataController < ApplicationController
   def update
     respond_to do |format|
       if @user_datum.update(user_datum_params)
-        flash.now[:success] = 'User datum was successfully updated.'
+        flash.now[:success] = 'Metrics were successfully updated.'
         format.html { redirect_to '/user_data'}
         format.json { head :no_content }
       else
@@ -88,6 +90,10 @@ class UserDataController < ApplicationController
         flash[:danger] = "Please log in"
         redirect_to signin_path
       end
+      
+    end
+    def get_goals
+      @goals = Goals.find_by user_id: current_user[:id]
       
     end
 end

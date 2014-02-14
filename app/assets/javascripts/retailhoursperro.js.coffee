@@ -6,21 +6,26 @@ for i in [ 1 .. select_rhs.length ]
   rocount = select_rocount[(i - 1)].dataset
   
   data.push [ month: rhs.month, value: ( rhs.retailHoursSold / rocount.retailRoCount ).toFixed(2) ]...
-
-barWidth = 50;
-width = (barWidth + 5) * data.length;
+console.log(data)
+width = 30 * data.length;
 height = 100;
+max_value = d3.max(data, (d) -> d.value)
+
+value = []
+for i in [0 .. data.length - 1]
+  value.push data[i].value
+
+month = []
+for i in [0 .. data.length - 1]
+  month.push data[i].month
 
 x = d3.scale.linear()
-  .domain([0, data.length])
+  .domain([0, data.length - 1])
   .range([0, width])
 y = d3.scale.linear().
-  domain([0, d3.max(data, (d) ->
-    d.value
-    )]).
-  range([0, height])
+  domain([0, max_value * 1.25]).
+  range([height, 0])
 
-# add the canvas to the DOM
 chart = d3.select(".detail_charts").
   append('div').
   attr('class', 'retailhoursperro').
@@ -30,48 +35,30 @@ chart = d3.select(".detail_charts").
   attr('viewBox','0 0 '+ width + ' ' + height ).
   attr('preserveAspectRatio','xMinYMin')
 
-chart.selectAll("rect").
-  data(data).
+chart.selectAll('path.line').
+  data([value]).
   enter().
-  append("svg:rect").
-  attr("x", (d, i) -> 
-    x(i)
-    ).
-  attr("y", (d) ->  
-    (height - y(d.value))
-    ).
-  attr("height", (d) -> 
-    y(d.value)
-    ).
-  attr("width", barWidth).
-  attr("fill", "#2d578b");
+  append("svg:path").
+  attr('d', d3.svg.line().
+    x( (d, i) ->  x(i) ).
+    y( y )
+    )
 
-chart.selectAll("text").
-  data(data).
+ticks = chart.selectAll('.tick').
+  data(y.ticks( data.length )).
   enter().
-  append("svg:text").
-  attr("x", (d, i) -> 
-    x(i)
-    ).
-  attr("y", (d) ->  
-    (height - y(d.value))
-    ).
-  attr("dx", barWidth/2).
-  attr("dy", "1.2em").
-  attr("text-anchor", "middle").
-  text((d) -> d.value).
-  attr("fill", "white");
+  append('svg:g').
+  attr('transform', (d) -> "translate(0, #{y(d)}").
+  attr('class', 'tick')
 
-chart.selectAll("text.xAxis").
-  data(data).
-  enter().append("svg:text").
-  attr("x", (d, i) -> 
-    x(i)
-    ).
-  attr("y", height).
-  attr("dx", barWidth/2).
-  attr("text-anchor", "middle").
-  attr("style", "font-size: 10px; font-family: Helvetica, sans-serif;").
-  text((d) -> d.month).
-  attr("transform", "translate(0, 12)").
-  attr("class", "xAxis");
+ticks.append('svg:line').
+  attr('y1', 0).
+  attr('y2', 0).
+  attr('x1', 0).
+  attr('x2', width)
+
+ticks.append('svg:text').
+  text(month, (d) -> d ).
+  attr('text-anchor', 'end').
+  attr('dy', 2).
+  attr('dx', -4)

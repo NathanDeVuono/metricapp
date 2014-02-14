@@ -1,7 +1,9 @@
 Metricapp::Application.routes.draw do
-  resources :user_data
+  resources :goals
 
+  resources :user_data
   resources :users
+  resources :goal
   resources :sessions, only: [ :new, :create, :destroy ]  
   match '/register', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'

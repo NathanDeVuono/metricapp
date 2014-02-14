@@ -5,6 +5,7 @@
       #{msg}
 
 - year_ago = (12.months.ago) .. (Time.now)
+
 .container-fluid
 .page-header
   %h1 
@@ -15,11 +16,14 @@
 
 .userlinks 
   = link_to 'Input New Metrics', new_user_datum_path, :class => 'btn btn-primary'
-    
-    
 
-  = if correct_user?
-    - link_to 'Register a New User', '/register', :class => 'btn btn-default'
+  - if correct_user?
+    = link_to 'Register a New User', '/register', :class => 'btn btn-default'
+  
+  - if @goals.blank?
+    = link_to 'Set your goals', '/goals/new', :class => 'btn btn-default'
+  - else
+    = link_to 'Update your goals', '/goals/1/edit', :class => 'btn btn-default'
 
   = link_to 'Log Out', signout_path, :method => :delete, :data => {:confirm => "Are you sure you want to log out?"}, :class => 'btn btn-default'
 
@@ -56,6 +60,10 @@
 .container-fluid
   %h1 Detailed Statistics
   .detail_charts
+
+
+
+
 :coffeescript
   datadump = $('.datadump')
   splashcharts = $('.splash_charts')
