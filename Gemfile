@@ -54,6 +54,6 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'haml-rails'
 
 # Rails Bootstrap
-gem 'bootstrap-sass', '~> 3.1.0'
+gem 'bootstrap-sass'
 
 gem 'rails_12factor', group: :production

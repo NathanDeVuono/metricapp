@@ -6,43 +6,46 @@
 
 - year_ago = (12.months.ago) .. (Time.now)
 
-.container-fluid
-.page-header
-  %h1 
-    KPI Analysis
-    %small 
-      Welcome, 
-      = @current_user[:name] + '!'
+.container-fluid.above-fold
+  .page-header
+    %h1 
+      KPI Analysis
+      %small 
+        Welcome, 
+        = @current_user[:name] + '!'
 
-.userlinks 
-  = link_to 'Input New Metrics', new_user_datum_path, :class => 'btn btn-primary'
 
-  - if correct_user?
-    = link_to 'Register a New User', '/register', :class => 'btn btn-default'
-  
-  - if @goals.blank?
-    = link_to 'Set your goals', '/goals/new', :class => 'btn btn-default'
-  - else
-    = link_to 'Update your goals', '/goals/1/edit', :class => 'btn btn-default'
 
-  = link_to 'Log Out', signout_path, :method => :delete, :data => {:confirm => "Are you sure you want to log out?"}, :class => 'btn btn-default'
-
-%nav.navigation
-  %ul 
+  %nav.navigation.pull-left.col-xs-12.col-md-2.btn-group-vertical
     - if @user_data.where(month: year_ago) != []
       - @user_data.each do |user_datum|
-        %li= link_to user_datum.month.strftime("%B, %Y"), user_datum
+        = link_to user_datum.month.strftime("%B, %Y"), edit_user_datum_path( user_datum ), :class => 'btn btn-default'
+    = link_to 'Input New Metrics', new_user_datum_path, :class => 'btn btn-primary'
+
+  .userlinks.pull-right.col-xs-12.col-md-2.btn-group-vertical
+
+    - if correct_user?
+      = link_to 'Register a New User', '/register', :class => 'btn btn-default'
     
-  = link_to 'Input New Metrics', new_user_datum_path, :class => 'btn btn-primary'
-.container
-  .overview
+    - if @goals.blank?
+      = link_to 'Set your goals', new_goal_path, :class => 'btn btn-default'
+    - else
+      = link_to 'Update your goals', edit_goal_path(@goals[:id]), :class => 'btn btn-default'
+
+    = link_to 'Log Out', signout_path, :method => :delete, :data => {:confirm => "Are you sure you want to log out?"}, :class => 'btn btn-default'
+
+  .overview.col-xs-12.col-md-8
+    .page-header
+      %h1 
+        Your Business At A Glance
     .splash_charts
       
           
     .datadump<
       
-      - @goals.attributes.each_pair do |goal_name, goal_value|
-        %div{ :class => 'goals', :data => { goal_name => goal_value }}
+      - if !@goals.blank?
+        - @goals.attributes.each_pair do |goal_name, goal_value|
+          %div{ :class => 'goals', :data => { goal_name => goal_value }}
 
       - @user_data.where(month: year_ago).order([:month]).each do |user_datum|
         %div{ :class => 'total_hours_sold', :data => {month: user_datum[:month].strftime('%b, %y'), total_hours_sold: user_datum[:total_hours_sold] }}
@@ -55,18 +58,52 @@
         %div{ :class => 'total_variable_expense', :data => {month: user_datum[:month].strftime('%b, %y'), total_variable_expense: user_datum[:total_variable_expense] }}
         %div{ :class => 'total_salaries', :data => {month: user_datum[:month].strftime('%b, %y'), total_salaries: user_datum[:total_salaries] }}
         %div{ :class => 'total_gross', :data => {month: user_datum[:month].strftime('%b, %y'), total_gross: user_datum[:total_gross] }}
-    .clearfix
-    %h2 Paragraph summaries
-    %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
-    %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. 
-    %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. 
-    %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.  
+    
+    %section.summaries
+      %h1 Paragraph summaries
+      %article 
+        %h1.h3 Retail Hours Per RO
+        %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+      %article 
+        %h1.h3 Hours Per Tech, Per Day
+        %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+      %article 
+        %h1.h3 Retail RO Count
+        %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+       
+      %article 
+        %h1.h3 Effective Labour Rate
+        %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+
+.clearfix
+
 .container-fluid
   %h1 Detailed Statistics
   .detail_charts
 
+  %section.pageheader
+    %h1 Detailed summaries
+    %article 
+      %h1.h3 Retail Hours Per RO
+      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+    %article 
+      %h1.h3 Hours Per Tech, Per Day
+      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+    %article 
+      %h1.h3 Retail RO Count
+      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+     
+    %article 
+      %h1.h3 Effective Labour Rate
+      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
 
+    %article 
+      %h1.h3 Salaries as a Percentage of Gross
+      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
 
+    %article 
+      %h1.h3 Expenses as a Percent of Gross
+      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
 
 :coffeescript
   datadump = $('.datadump')

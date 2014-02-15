@@ -34,7 +34,7 @@ chart = d3.select(".splash_charts").
   append("svg:svg").
   attr("width", width).
   attr("height", height).
-  attr('viewBox','0 0 '+ width + ' ' + height ).
+  attr('viewBox','-60 -30 '+ (width + 100) + ' ' + height ).
   attr('preserveAspectRatio','xMinYMin')
 
 chart.selectAll('path.line').

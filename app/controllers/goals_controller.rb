@@ -59,7 +59,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
     respond_to do |format|
-      format.html { redirect_to goals_url }
+      format.html { redirect_to '/user_data' }
       format.json { head :no_content }
     end
   end

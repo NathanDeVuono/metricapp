@@ -8,10 +8,13 @@
 .page-header
   %h1 New Goals Input
 
-.container
-  .userlinks
-    = link_to 'Back', user_data_path, :class => 'btn btn-default'  
 
+.container-fluid 
+
+  .userlinks.pull-right.col-xs-12.col-md-2.btn-group-vertical
+    = link_to 'Back', user_data_path, :class => 'btn btn-default'
+
+  .col-xs-12.col-md-8.pull-right
     = render 'form'
 
 

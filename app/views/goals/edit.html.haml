@@ -1,7 +1,18 @@
-%h1 Editing goal
+= provide(:title, "Edit Goals")
 
-= render 'form'
+- flash.each do |key, msg|
+  %div{ :class => 'text-center bg-' + key.to_s } 
+    %span{ :class => 'h3 text-' + key.to_s}
+      #{msg}
+      
+.page-header
+  %h1 Edit Goals
 
-= link_to 'Show', @goal
-\|
-= link_to 'Back', goals_path
+.container-fluid
+  
+  .userlinks.pull-right.col-xs-12.col-md-2.btn-group-vertical
+    = link_to 'Back', '/user_data', :class => 'btn btn-default'
+    = link_to 'Delete', goal_path, :method => :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default'
+  .col-xs-12.col-md-8.pull-right
+    
+    = render 'form'

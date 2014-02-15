@@ -2,26 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1 {
-  text-indent: 1em;
+.above-fold {
+  background:#333;
+  color:white;
 }
+
 .navigation {
-  float:left;
-  margin:20px;
+
   ul {
     list-style-type: none;
-    li {
-      margin-left:-2em;
-    }
   }
 }
 .overview {
-  float:left;
-  min-width:80%;
-}
-.userlinks {
-  float:right;
-  margin:20px;
 }
 
 .path {
@@ -41,17 +33,11 @@ h1 {
   stroke-width:3px;
 }
 
-.xAxis {
-  // -webkit-transform:translate(-20px,0);
-  // transform:translate(-20px,0);
-  // font-size: 10px;
-}
-
 svg {
   width:100%;
   height:100%;
-  padding:15%;
-  padding-top:20px;
+
+  background:white;
 }
 
 .splash_charts {
@@ -77,6 +63,10 @@ svg {
       font-weight:semibold;
     }
   }
+}
+
+.summaries {
+  margin-bottom: 48px;
 }
 
 .datadump {

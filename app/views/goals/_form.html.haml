@@ -41,7 +41,5 @@
         - @goal.errors.full_messages.each do |msg|
           %li= msg
 
-  .actions
+  .actions.pull-left.col-xs-12.col-md-2.btn-group-vertical
     = f.submit 'Save', :class => 'btn btn-primary'
-
-= debug @goal

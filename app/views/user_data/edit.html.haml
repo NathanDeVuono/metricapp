@@ -9,9 +9,12 @@
   %h1
     Editing
     = @user_datum[:month].strftime("%B, %Y")
-.container
-  .userlinks
-    = link_to 'Back', user_data_path, :class => 'btn btn-default'
-  = render 'form'
 
+.container-fluid
   
+  .userlinks.pull-right.col-xs-12.col-md-2.btn-group-vertical
+    = link_to 'Back', user_data_path, :class => 'btn btn-default'
+    = link_to 'Delete', user_data_path, :method => :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default'
+  .col-xs-12.col-md-8.pull-right
+    
+    = render 'form'
