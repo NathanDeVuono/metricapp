@@ -3,7 +3,7 @@ Metricapp::Application.routes.draw do
 
   resources :user_data
   resources :users
-  resources :goal
+  resources :goal, only: [:show, :new, :edit, :destroy]
   resources :sessions, only: [ :new, :create, :destroy ]  
   match '/register', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'

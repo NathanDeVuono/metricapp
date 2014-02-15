@@ -40,23 +40,27 @@
       
           
     .datadump<
+      
+      - @goals.attributes.each_pair do |goal_name, goal_value|
+        %div{ :class => 'goals', :data => { goal_name => goal_value }}
+
       - @user_data.where(month: year_ago).order([:month]).each do |user_datum|
-        %div{ :class => 'total_hours_sold', :data => {month: user_datum[:month].strftime('%b, %Y'), total_hours_sold: user_datum[:total_hours_sold] }}
-        %div{ :class => 'retail_hours_sold', :data => {month: user_datum[:month].strftime('%b, %Y'), retail_hours_sold: user_datum[:retail_hours_sold] }}
-        %div{ :class => 'total_labour_sales', :data => {month: user_datum[:month].strftime('%b, %Y'), total_labour_sales: user_datum[:total_labour_sales] }}
-        %div{ :class => 'retail_labour_sales', :data => {month: user_datum[:month].strftime('%b, %Y'), retail_labour_sales: user_datum[:retail_labour_sales] }}
-        %div{ :class => 'number_of_techs', :data => {month: user_datum[:month].strftime('%b, %Y'), number_of_techs: user_datum[:number_of_techs] }}
-        %div{ :class => 'work_days_per_tech', :data => {month: user_datum[:month].strftime('%b, %Y'), work_days_per_tech: user_datum[:work_days_per_tech] }}
-        %div{ :class => 'retail_ro_count', :data => {month: user_datum[:month].strftime('%b, %Y'), retail_ro_count: user_datum[:retail_ro_count] }}
-        %div{ :class => 'total_variable_expense', :data => {month: user_datum[:month].strftime('%b, %Y'), total_variable_expense: user_datum[:total_variable_expense] }}
-        %div{ :class => 'total_salaries', :data => {month: user_datum[:month].strftime('%b, %Y'), total_salaries: user_datum[:total_salaries] }}
-        %div{ :class => 'total_gross', :data => {month: user_datum[:month].strftime('%b, %Y'), total_gross: user_datum[:total_gross] }}
-  .clearfix
-  %h2 Paragraph summaries
-  %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
-  %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. 
-  %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. 
-  %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.  
+        %div{ :class => 'total_hours_sold', :data => {month: user_datum[:month].strftime('%b, %y'), total_hours_sold: user_datum[:total_hours_sold] }}
+        %div{ :class => 'retail_hours_sold', :data => {month: user_datum[:month].strftime('%b, %y'), retail_hours_sold: user_datum[:retail_hours_sold] }}
+        %div{ :class => 'total_labour_sales', :data => {month: user_datum[:month].strftime('%b, %y'), total_labour_sales: user_datum[:total_labour_sales] }}
+        %div{ :class => 'retail_labour_sales', :data => {month: user_datum[:month].strftime('%b, %y'), retail_labour_sales: user_datum[:retail_labour_sales] }}
+        %div{ :class => 'number_of_techs', :data => {month: user_datum[:month].strftime('%b, %y'), number_of_techs: user_datum[:number_of_techs] }}
+        %div{ :class => 'work_days_per_tech', :data => {month: user_datum[:month].strftime('%b, %y'), work_days_per_tech: user_datum[:work_days_per_tech] }}
+        %div{ :class => 'retail_ro_count', :data => {month: user_datum[:month].strftime('%b, %y'), retail_ro_count: user_datum[:retail_ro_count] }}
+        %div{ :class => 'total_variable_expense', :data => {month: user_datum[:month].strftime('%b, %y'), total_variable_expense: user_datum[:total_variable_expense] }}
+        %div{ :class => 'total_salaries', :data => {month: user_datum[:month].strftime('%b, %y'), total_salaries: user_datum[:total_salaries] }}
+        %div{ :class => 'total_gross', :data => {month: user_datum[:month].strftime('%b, %y'), total_gross: user_datum[:total_gross] }}
+    .clearfix
+    %h2 Paragraph summaries
+    %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+    %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. 
+    %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. 
+    %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.  
 .container-fluid
   %h1 Detailed Statistics
   .detail_charts

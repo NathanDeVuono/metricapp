@@ -7,71 +7,83 @@ for i in [ 1 .. select_expense.length ]
   
   data.push [ month: expense.month, value: (( expense.totalVariableExpense / gross.totalGross ) * 100).toFixed(2) ]...
 
-barWidth = 50;
-width = (barWidth + 5) * data.length;
-height = 100;
+width = 320 
+height = 240
+max_value = d3.max(data, (d) -> d.value)
+
+value = []
+for i in [0 .. data.length - 1]
+  value.push data[i].value
+
+month = []
+for i in [0 .. data.length - 1]
+  month.push data[i].month
 
 x = d3.scale.linear()
-  .domain([0, data.length])
+  .domain([0, data.length - 1])
   .range([0, width])
 y = d3.scale.linear().
-  domain([0, d3.max(data, (d) ->
-    d.value
-    )]).
-  range([0, height])
+  domain([0, max_value * 1.25]).
+  range([height, 0])
 
-# add the canvas to the DOM
 chart = d3.select(".detail_charts").
   append('div').
-  attr('class', 'variableexpaspercentgross').
+  attr('class', 'variableexpaspercentgross col-xs-12 col-md-4').
   append("svg:svg").
   attr("width", width).
   attr("height", height).
   attr('viewBox','0 0 '+ width + ' ' + height ).
   attr('preserveAspectRatio','xMinYMin')
 
-chart.selectAll("rect").
-  data(data).
+chart.selectAll('path.line').
+  data([value]).
   enter().
-  append("svg:rect").
-  attr("x", (d, i) -> 
-    x(i)
+  append("svg:path").
+  attr('d', d3.svg.line().
+    x( (d, i) ->  x(i) ).
+    y( y )
     ).
-  attr("y", (d) ->  
-    (height - y(d.value))
-    ).
-  attr("height", (d) -> 
-    y(d.value)
-    ).
-  attr("width", barWidth).
-  attr("fill", "#2d578b");
+  attr('class', 'path')
 
-chart.selectAll("text").
-  data(data).
+chart.selectAll('.point').
+  data(value).
   enter().
-  append("svg:text").
-  attr("x", (d, i) -> 
-    x(i)
-    ).
-  attr("y", (d) ->  
-    (height - y(d.value))
-    ).
-  attr("dx", barWidth/2).
-  attr("dy", "1.2em").
-  attr("text-anchor", "middle").
-  text((d) -> d.value).
-  attr("fill", "white");
+  append('svg:circle').
+    attr('class', 'point').
+    attr('cx', (d,i) -> x(i)).
+    attr('cy', (d) -> y(d)).
+    attr('r', 4)
+
+ticks = chart.selectAll('.tick').
+  data(y.ticks( 5 )).
+  enter().
+  append('svg:g').
+  attr('class', 'tick')
+
+ticks.append('svg:text').
+  text( (d) -> d ).
+  attr('text-anchor', 'end').
+  attr('y', (d) -> y(d)).
+  attr('x', -30)
 
 chart.selectAll("text.xAxis").
   data(data).
   enter().append("svg:text").
-  attr("x", (d, i) -> 
-    x(i)
-    ).
-  attr("y", height).
-  attr("dx", barWidth/2).
+  attr("x", (d, i) -> x(i)).
+  attr("y", height + 20).
   attr("text-anchor", "middle").
-  attr("style", "font-size: 10px; font-family: Helvetica, sans-serif;").
   text((d) -> d.month).
-  attr("transform", "translate(0, 12)").
-  attr("class", "xAxis");
+  attr("class", "xAxis")
+
+select_goals = $('.goals[data-other-as-percent-gross]').data()
+goal = select_goals.otherAsPercentGross
+
+chart.selectAll('path.line').
+  data([goal]).
+  enter().
+  append('svg:line').
+  attr('y1', (d) -> y(d)).
+  attr('y2', (d) -> y(d)).
+  attr('x1', 0).
+  attr('x2', width).
+  attr('class', 'goal')

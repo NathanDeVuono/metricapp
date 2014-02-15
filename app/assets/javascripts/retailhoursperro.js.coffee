@@ -6,9 +6,9 @@ for i in [ 1 .. select_rhs.length ]
   rocount = select_rocount[(i - 1)].dataset
   
   data.push [ month: rhs.month, value: ( rhs.retailHoursSold / rocount.retailRoCount ).toFixed(2) ]...
-console.log(data)
-width = 30 * data.length;
-height = 100;
+
+width = 320 
+height = 240
 max_value = d3.max(data, (d) -> d.value)
 
 value = []
@@ -28,7 +28,7 @@ y = d3.scale.linear().
 
 chart = d3.select(".detail_charts").
   append('div').
-  attr('class', 'retailhoursperro').
+  attr('class', 'retailhoursperro col-xs-12 col-md-4').
   append("svg:svg").
   attr("width", width).
   attr("height", height).
@@ -42,23 +42,48 @@ chart.selectAll('path.line').
   attr('d', d3.svg.line().
     x( (d, i) ->  x(i) ).
     y( y )
-    )
+    ).
+  attr('class', 'path')
+
+chart.selectAll('.point').
+  data(value).
+  enter().
+  append('svg:circle').
+    attr('class', 'point').
+    attr('cx', (d,i) -> x(i)).
+    attr('cy', (d) -> y(d)).
+    attr('r', 4)
 
 ticks = chart.selectAll('.tick').
-  data(y.ticks( data.length )).
+  data(y.ticks( 5 )).
   enter().
   append('svg:g').
-  attr('transform', (d) -> "translate(0, #{y(d)}").
   attr('class', 'tick')
 
-ticks.append('svg:line').
-  attr('y1', 0).
-  attr('y2', 0).
-  attr('x1', 0).
-  attr('x2', width)
-
 ticks.append('svg:text').
-  text(month, (d) -> d ).
+  text( (d) -> d ).
   attr('text-anchor', 'end').
-  attr('dy', 2).
-  attr('dx', -4)
+  attr('y', (d) -> y(d)).
+  attr('x', -30)
+
+chart.selectAll("text.xAxis").
+  data(data).
+  enter().append("svg:text").
+  attr("x", (d, i) -> x(i)).
+  attr("y", height + 20).
+  attr("text-anchor", "middle").
+  text((d) -> d.month).
+  attr("class", "xAxis")
+
+select_goals = $('.goals[data-retail-hrs-per-ro]').data()
+goal = select_goals.retailHrsPerRo
+
+chart.selectAll('path.line').
+  data([goal]).
+  enter().
+  append('svg:line').
+  attr('y1', (d) -> y(d)).
+  attr('y2', (d) -> y(d)).
+  attr('x1', 0).
+  attr('x2', width).
+  attr('class', 'goal')

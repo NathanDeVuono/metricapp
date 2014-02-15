@@ -24,28 +24,40 @@ h1 {
   margin:20px;
 }
 
-path {
+.path {
   stroke: steelblue;
   stroke-width: 3px;
   fill:none;
 }
 
+.point {
+  fill:steelblue;
+  stroke: lighten(steelblue, 20%);
+  stroke-width:2px;
+}
+
+.goal {
+  stroke:rgba(255,70,0,.4);
+  stroke-width:3px;
+}
+
+.xAxis {
+  // -webkit-transform:translate(-20px,0);
+  // transform:translate(-20px,0);
+  // font-size: 10px;
+}
+
 svg {
   width:100%;
   height:100%;
+  padding:15%;
+  padding-top:20px;
 }
 
 .splash_charts {
-  height:500px;
   margin:0 auto;
-  
-
   div {
-    float:left;
-    width:30%;
-    height:40%;
-    margin:10%;
-    margin-top:50px;
+    margin-bottom:40px;
     &:before {
       position:relative;
       font-size:24px;
@@ -57,20 +69,12 @@ svg {
 }
 
 .detail_charts {
-  max-width:80%;
-  height:800px;
-  margin:0 auto;
   div {
-    float:left;
-    width:20%;
-    height:20%;
-    margin:6.5%;
+    margin-bottom:40px;
     &:before {
       position:relative;
       font-size:24px;
       font-weight:semibold;
-      text-align: center;
-      top: -20px;
     }
   }
 }
@@ -103,7 +107,7 @@ svg {
   }
 }
 
-.salariespercentgross {
+.salariesaspercentgross {
   &:before {
     content: 'Salaries as % of Gross';
   }
