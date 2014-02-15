@@ -10,12 +10,17 @@ class UsersController < ApplicationController
         redirect_to '/user_data'
       end
   end
+
+  def new
+    
+  end
+
   def create
     @user = User.new(user_params)
       if @user.save
         sign_in @user
         flash.now[:success] = "Welcome to Metrics"
-        redirect_to "/user_data"
+        redirect_to "/users"
       else
         render 'new'
       end

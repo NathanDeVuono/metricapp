@@ -1,7 +1,7 @@
 Metricapp::Application.routes.draw do
   resources :goals
 
-  resources :user_data, only: [:index, :new, :edit, :destroy]
+  resources :user_data
   resources :users
   resources :goal, only: [:new, :edit, :destroy]
   resources :sessions, only: [ :new, :create, :destroy ]  
