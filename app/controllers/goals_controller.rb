@@ -29,7 +29,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        flash.now[:success] = 'Goal was successfully added.'
+        flash[:success] = 'Goal was successfully added.'
         format.html { redirect_to '/user_data'}
         format.json { render action: 'show', status: :created, location: @goal }
       else
@@ -44,7 +44,7 @@ class GoalsController < ApplicationController
   def update
     respond_to do |format|
       if @goal.update(goal_params)
-        flash.now[:success] = 'Goal was successfully updated.'
+        flash[:success] = 'Goal was successfully updated.'
         format.html { redirect_to '/user_data'}
         format.json { head :no_content }
       else

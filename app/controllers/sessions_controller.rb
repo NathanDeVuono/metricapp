@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
   before_filter :get_current_user
   def new
-    # if !@current_user.nil?
-    #   flash[:success] = 'Welcome, ' + @current_user[:name]
-    #   redirect_to "/user_data"
-    # end
+    if !@current_user.nil?
+      flash[:success] = 'Welcome, ' + @current_user[:name]
+      redirect_to "/user_data"
+    end
   end
 
   def create
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'Welcome, ' + user[:name]
       redirect_to "/user_data"
     else
-      flash.now[:danger] = 'Incorrect email or password'
+      flash[:danger] = 'Incorrect email or password'
       render 'new'
     end
 

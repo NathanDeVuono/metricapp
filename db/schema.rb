@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213172700) do
+ActiveRecord::Schema.define(version: 20140217180454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "goals", force: true do |t|
     t.integer  "user_id"
-    t.integer  "retail_hrs_per_ro"
-    t.integer  "elr_retail"
-    t.integer  "retail_ro_count"
-    t.integer  "tech_hrs_per_day"
-    t.integer  "salaries_as_percent_gross"
-    t.integer  "other_as_percent_gross"
+    t.decimal  "retail_hrs_per_ro"
+    t.decimal  "elr_retail"
+    t.decimal  "retail_ro_count"
+    t.decimal  "tech_hrs_per_day"
+    t.decimal  "salaries_as_percent_gross"
+    t.decimal  "other_as_percent_gross"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

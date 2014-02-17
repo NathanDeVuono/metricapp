@@ -1,7 +1,7 @@
 = provide(:title, "New Goals Input")
 
 - flash.each do |key, msg|
-  %div{ :class => 'text-center bg-' + key.to_s } 
+  %div{ :class => 'flash text-center bg-' + key.to_s } 
     %span{ :class => 'h3 text-' + key.to_s}
       #{msg}
       

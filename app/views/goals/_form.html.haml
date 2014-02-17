@@ -3,35 +3,27 @@
 
   .form-group.col-xs-6
     = f.label(:retail_hrs_per_ro, "Retail Hours Per RO", :class => 'control-label')
-    .input-group
-      %span.input-group-addon $
-      = f.number_field(:step => 'any', :retail_hrs_per_ro, :class => 'form-control', :placeholder => 'Retail Hours Per RO')
+    = f.number_field( :retail_hrs_per_ro, :step => 0.01, :class => 'form-control', :placeholder => 'Retail Hours Per RO')
   
-  .form-group.col-xs-6
-    = f.label(:elr_retail, "Effective Labour Rate", :class => 'control-label')
-    .input-group
-      %span.input-group-addon $
-      = f.number_field(:step => 'any', :elr_retail, :class => 'form-control', :placeholder => 'Effective Labour Rate')
-  
-  .form-group.col-xs-6
-    = f.label(:retail_ro_count, "Retail RO Count", :class => 'control-label')
-    .input-group
-      %span.input-group-addon $
-      = f.number_field(:step => 'any', :retail_ro_count, :class => 'form-control', :placeholder => 'Retail RO Count')  
-
   .form-group.col-xs-6
     = f.label(:tech_hrs_per_day, "Hours Per Tech, Per Day", :class => 'control-label')
-    .input-group
-      %span.input-group-addon $
-      = f.number_field(:step => 'any', :tech_hrs_per_day, :class => 'form-control', :placeholder => 'Hours Per Tech Per Day')
+    = f.number_field(:tech_hrs_per_day, :step => 0.01, :class => 'form-control', :placeholder => 'Hours Per Tech Per Day')
 
   .form-group.col-xs-6
+    = f.label(:retail_ro_count, "Retail RO Count", :class => 'control-label')
+    = f.number_field(:retail_ro_count, :step => 0.01, :class => 'form-control', :placeholder => 'Retail RO Count')
+
+  .form-group.col-xs-6
+    = f.label(:elr_retail, "Effective Labour Rate", :class => 'control-label')
+    = f.number_field( :elr_retail, :step => 0.01, :class => 'form-control', :placeholder => 'Effective Labour Rate')
+  
+  .form-group.col-xs-6
     = f.label(:salaries_as_percent_gross, "Salaries as % of Gross", :class => 'control-label')
-    = f.number_field(:step => 'any', :salaries_as_percent_gross, :class => 'form-control', :placeholder => 'Salaries as % of Gross')
+    = f.number_field(:salaries_as_percent_gross, :step => 0.01, :class => 'form-control', :placeholder => 'Salaries as % of Gross')
   
   .form-group.col-xs-6
     = f.label(:other_as_percent_gross, "Expenses as % of Gross", :class => 'control-label')
-    = f.number_field(:step => 'any', :other_as_percent_gross, :class => 'form-control', :placeholder => 'Expenses as % of Gross')
+    = f.number_field(:other_as_percent_gross, :step => 0.01, :class => 'form-control', :placeholder => 'Expenses as % of Gross')
   
   
   - if @goal.errors.any?

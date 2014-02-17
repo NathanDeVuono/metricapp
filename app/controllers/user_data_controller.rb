@@ -32,7 +32,7 @@ class UserDataController < ApplicationController
 
     respond_to do |format|
       if @user_datum.save
-        flash.now[:success] = 'Metrics were successfully added.'
+        flash[:success] = 'Metrics were successfully added.'
         format.html { redirect_to @user_datum}
         format.json { render action: 'show', status: :created, location: @user_datum }
       else
@@ -47,7 +47,7 @@ class UserDataController < ApplicationController
   def update
     respond_to do |format|
       if @user_datum.update(user_datum_params)
-        flash.now[:success] = 'Metrics were successfully updated.'
+        flash[:success] = 'Metrics were successfully updated.'
         format.html { redirect_to '/user_data'}
         format.json { head :no_content }
       else
