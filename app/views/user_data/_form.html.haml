@@ -9,7 +9,7 @@
     = f.label(:total_gross, "Total Gross", :class => 'control-label')
     .input-group
       %span.input-group-addon $
-      = f.number_field(:step => 0.01, :total_gross, :class => 'form-control')
+      = f.number_field(:total_gross, :step => 0.01, :class => 'form-control')
   
   .form-group.col-xs-12.col-md-6
     = f.label(:total_variable_expense, "Total Variable Expense", :class => 'control-label')
