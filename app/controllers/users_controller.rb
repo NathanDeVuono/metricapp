@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    
+    @user = User.new
   end
 
   def create
@@ -25,5 +25,12 @@ class UsersController < ApplicationController
         render 'new'
       end
   end
+
+  private
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password)
+    end
 
 end
