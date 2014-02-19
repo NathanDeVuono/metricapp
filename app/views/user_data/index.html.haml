@@ -59,51 +59,278 @@
         %div{ :class => 'total_salaries', :data => {month: user_datum[:month].strftime('%b, %y'), total_salaries: user_datum[:total_salaries] }}
         %div{ :class => 'total_gross', :data => {month: user_datum[:month].strftime('%b, %y'), total_gross: user_datum[:total_gross] }}
     
-    %section.summaries
-      %h1 Paragraph summaries
-      %article 
-        %h1.h3 Retail Hours Per RO
-        %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
-      %article 
-        %h1.h3 Hours Per Tech, Per Day
-        %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
-      %article 
-        %h1.h3 Retail RO Count
-        %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
-       
-      %article 
-        %h1.h3 Effective Labour Rate
-        %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
-
 .clearfix
 
 .container-fluid
   %h1 Detailed Statistics
+  
   .detail_charts
 
   %section.pageheader
-    %h1 Detailed summaries
-    %article 
+    %h1 What could be causing you to not meet your goals?
+    %p.h4 
+      The Service Department is primarily a sales organization just like the New Car Department. The difference is that in Service you have to make what you sell. Therefore, Service profitability boils down to performance in sales, production and expense controls. 
+    %p.h4 
+      To efficiently manage the Service operation you need to be able to quickly identify performance deficiencies in any of these key areas, then dig in and determine root causes.
+    %article.col-xs-12.col-md-6 
       %h1.h3 Retail Hours Per RO
-      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
-    %article 
+      %table 
+        %tr 
+          %th What
+          %th Why
+        %tr 
+          %td
+            %strong Associate not recommending maintenance bundles and/or not recommending up-sell from shop
+          %td Associate not motivated by pay plan
+        %tr 
+          %td 
+          %td Associate does not believe in the value of the serices you are offering
+        %tr 
+          %td 
+          %td Associate does not trust technician recommendations
+        %tr 
+          %td 
+          %td Overbooking, limiting associate ability to sell
+        %tr 
+          %td 
+          %td Associate deciding for the customer based on a predicted result
+        %tr 
+          %td 
+          %td No consequences for associate failure to perform a basic job function
+        %tr.divider 
+          %td 
+            %strong Poor selling skills
+          %td Associate does not follow a proven method for losing service sales
+        %tr 
+          %td 
+          %td Technician not providing assiciate with a reason to have the work performed
+        %tr.divider 
+          %td 
+            %strong Maintenance bundles over-priced
+          %td Failure to perform market research to develop competitive pricing
+        %tr.divider 
+          %td 
+            %strong Needed work not discovered during the vehicle inspection process
+          %td Lack of training for lube technicians
+        %tr 
+          %td 
+          %td Lack of incentives
+        %tr 
+          %td 
+          %td No conesquences for failure to perform a basic job function
+        %tr.divider 
+          %td 
+            %strong  Associate does not have adequate time
+          %td Appointments not spread out
+        %tr 
+          %td 
+          %td Associate is preoccupied with secondary functions
+        %tr 
+          %td 
+          %td Overbooking
+    %article.col-xs-12.col-md-6 
       %h1.h3 Hours Per Tech, Per Day
-      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
-    %article 
+      %table 
+        %tr 
+          %th What
+          %th Why
+        %tr 
+          %td 
+            %strong Low Productivity
+          %td Too any technicians for workload
+        %tr 
+          %td 
+          %td Poor dispatch practices
+        %tr 
+          %td 
+          %td Over-specialization of technicians
+        %tr.divider 
+          %td 
+            %strong Low efficiency
+          %td Poor dispatch practicies
+        %tr 
+          %td 
+          %td Ineffective labour estimating
+        %tr 
+          %td 
+          %td Lack of training or equipment
+        %tr 
+          %td 
+          %td Lack of motivation from pay plan
+        %tr 
+          %td 
+          %td Poor advisor sales results
+        %tr 
+          %td 
+          %td Poorly written repair orders
+        %tr.divider 
+          %td 
+            %strong High rate of absence
+          %td Too many technicians for workload
+        %tr 
+          %td 
+          %td Poor management controls
+        %tr 
+          %td 
+          %td Repeated or ongoing employee health issues
+    %article.col-xs-12.col-md-6 
       %h1.h3 Retail RO Count
-      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+      %table 
+        %tr 
+          %th What
+          %th Why
+        %tr 
+          %td 
+            %strong Service Maintenance Reminders not being completed
+          %td Secondary functions being given higher by employee responsible
+          %tr 
+            %td 
+            %td Lack of coverage for vacations
+          %tr 
+            %td 
+            %td Poor system configuration
+          %tr 
+            %td 
+            %td BDC person not motivated by pay plan
+          %tr.divider 
+            %td 
+              %strong Poor quality of reminders
+            %td Lack of BDC training or dedicated BDC person
+          %tr 
+            %td 
+            %td Ineffective BDC pay plan
+          %tr 
+            %td 
+            %td Failure to keep customer selection process up to date
+          %tr 
+            %td 
+            %td Failure to keep maintenance schedules/recommendations up to date
+          %tr.divider 
+            %td 
+              %strong First service appointments not being made
+            %td No process in place
+          %tr 
+            %td 
+            %td No incentive for BDC person
+          %tr 
+            %td 
+            %td No performance metrics
+          %tr.divider 
+            %td 
+              %strong Customer defection to alternate retailer
+            %td Lack of trust
+          %tr 
+            %td 
+            %td Lack of value in services
+          %tr 
+            %td 
+            %td Does not feel that Dealership respects their time
+          %tr 
+            %td 
+            %td Does not enjoy Dealer environment (people/facility)
      
-    %article 
+    %article.col-xs-12.col-md-6 
       %h1.h3 Effective Labour Rate
-      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+      %table 
+        %tr 
+          %th What
+          %th Why
+        %tr 
+          %td 
+            %strong Discounting by Advisors
+          %td Lack of clear policy
+        %tr 
+          %td 
+          %td Lack of consequences for discounting
+        %tr.divider 
+          %td 
+            %strong High volume on heavily discounted items relative to total labour sales
+          %td Associate not recommending maintenance bundles
+        %tr 
+          %td 
+          %td Maintenance bundles over-priced
+        %tr 
+          %td 
+          %td Advertised specials
+        %tr 
+          %td 
+          %td Poor vehicle inspection process
+        %tr 
+          %td 
+          %td Associate not recommending up-sell from shop
+        %tr.divider 
+          %td 
+            %strong Excessive discount structure
+          %td Failure to accurately anticipate the effects of pricing policy on ELR
+        %tr.divider 
+          %td 
+            %strong Overbooking, limiting associate ability to sell
+          %td Lack of effective appointment process
+        %tr 
+          %td 
+          %td Poor communication regarding technician availability
+        %tr 
+          %td 
+            %strong Labour rates dont support ELR targets
+          %td Age/use of average vehicle
+        %tr 
+          %td 
+          %td Door rate low
+        %tr 
+          %td 
+          %td Maintenance rate low
+        %tr 
+          %td 
+          %td Competitive rate low
 
-    %article 
+    %article.col-xs-12.col-md-6 
       %h1.h3 Salaries as a Percentage of Gross
-      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+      %table 
+        %tr 
+          %th What
+          %th Why
+        %tr 
+          %td 
+            %strong Unable to meet reasonable sales targets
+          %td Low effective labour rate
+        %tr 
+          %td 
+          %td Low hours per repair order
+        %tr 
+          %td 
+          %td Declining repair order count
+        %tr.divider 
+          %td 
+            %strong Over-staffing causing productive employee to non-productive ratio to fall too low
+          %td Ineffective planning and organization
+        %tr 
+          %td 
+          %td Declining repair order count
+        %tr.divider 
+          %td 
+            %strong Pay plans too rich
+          %td One or more staff earning in excess of department's ability to support
 
-    %article 
+    %article.col-xs-12.col-md-6 
       %h1.h3 Expenses as a Percent of Gross
-      %p These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries. These are summaries.
+      %table 
+        %tr 
+          %th What
+          %th Why
+        %tr 
+          %td 
+            %strong Unable to meet reasonable sales targets
+          %td Low effective labour rate
+        %tr 
+          %td 
+          %td Low hours per repair order
+        %tr 
+          %td 
+          %td Declining repair order count
+        %tr.divider 
+          %td 
+            %strong Ineffective plans and controls for the six major expenses
+          %td Shop supplies; transportation assistance; policy; training; advertising and promotion; vacation, holiday and sick pay
 
 :coffeescript
   datadump = $('.datadump')

@@ -4,6 +4,7 @@
 
 .above-fold {
   background:#333;
+  background-image: url(bg.png);
   color:white;
 }
 
@@ -107,4 +108,20 @@ svg {
   &:before {
     content: 'Expenses as % of Gross';
   }
+}
+
+.divider {
+  border-top:2px solid #666;
+}
+table {
+  width:100%;
+}
+th {
+  background:#333;
+  background-image: url(bg.png);
+  color:white;
+  padding:5px;
+}
+td {
+  padding:5px;
 }
