@@ -18,7 +18,7 @@
 
   %nav.navigation.pull-left.col-xs-12.col-md-2.btn-group-vertical
     - if @user_data.where(month: year_ago) != []
-      - @user_data.each do |user_datum|
+      - @user_data.order([:month]).each do |user_datum|
         = link_to user_datum.month.strftime("%B, %Y"), edit_user_datum_path( user_datum ), :class => 'btn btn-default'
     = link_to 'Input New Metrics', new_user_datum_path, :class => 'btn btn-primary'
 

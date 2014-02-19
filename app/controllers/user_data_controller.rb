@@ -33,7 +33,7 @@ class UserDataController < ApplicationController
     respond_to do |format|
       if @user_datum.save
         flash[:success] = 'Metrics were successfully added.'
-        format.html { redirect_to @user_datum}
+        format.html { redirect_to '/user_datum'}
         format.json { render action: 'show', status: :created, location: @user_datum }
       else
         format.html { render action: 'new' }
@@ -62,7 +62,7 @@ class UserDataController < ApplicationController
   def destroy
     @user_datum.destroy
     respond_to do |format|
-      format.html { redirect_to user_data_url }
+      format.html { redirect_to '/user_data' }
       format.json { head :no_content }
     end
   end
