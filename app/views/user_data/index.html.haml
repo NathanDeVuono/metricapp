@@ -25,7 +25,7 @@
   .userlinks.pull-right.col-xs-12.col-md-2.btn-group-vertical
 
     - if correct_user?
-      = link_to 'Register a New User', '/register', :class => 'btn btn-default'
+      = link_to 'Manage Users', '/users', :class => 'btn btn-default'
     
     - if @goals.blank?
       = link_to 'Set your goals', new_goal_path, :class => 'btn btn-default'
