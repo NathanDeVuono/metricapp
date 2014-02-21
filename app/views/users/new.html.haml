@@ -1,0 +1,20 @@
+= provide(:title, "New User Registration")
+
+- flash.each do |key, msg|
+  %div{ :class => 'flash text-center bg-' + key.to_s } 
+    %span{ :class => 'h3 text-' + key.to_s}
+      #{msg}
+  
+.page-header
+  %h1 New User Registration
+
+
+.container-fluid 
+
+  .userlinks.pull-right.col-xs-12.col-md-2.btn-group-vertical
+    = link_to 'Back', '/users', :class => 'btn btn-default'
+
+  .col-xs-12.col-md-8.pull-right
+    = render 'form'
+
+
