@@ -1,1 +1,1 @@
-$(document).ready -> $('.flash').delay(3000).slideUp(700)
+$(document).ready -> $('.flash').delay(2000).slideUp(500)

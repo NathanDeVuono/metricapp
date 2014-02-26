@@ -61,17 +61,23 @@
     
 .clearfix
 
-.container-fluid
+.container-fluid.grey
   %h1 Detailed Statistics
   
   .detail_charts
 
+  .clearfix
+.container-fluid
   %section.pageheader
     %h1 What could be causing you to not meet your goals?
-    %p.h4 
-      The Service Department is primarily a sales organization just like the New Car Department. The difference is that in Service you have to make what you sell. Therefore, Service profitability boils down to performance in sales, production and expense controls. 
-    %p.h4 
-      To efficiently manage the Service operation you need to be able to quickly identify performance deficiencies in any of these key areas, then dig in and determine root causes.
+    .container
+      %p.h3 
+        The Service Department is primarily a sales organization just like the New Car Department. The difference is that in Service you have to make what you sell. Therefore, Service profitability boils down to performance in sales, production and expense controls. 
+      %p.h3 
+        To efficiently manage the Service operation you need to be able to quickly identify performance deficiencies in any of these key areas, then dig in and determine root causes.
+  
+.container-fluid  
+  .section
     %article.col-xs-12.col-md-6 
       %h1.h3 Retail Hours Per RO
       %table 
